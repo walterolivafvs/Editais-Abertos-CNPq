@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Editais Abertos — CNPq</title>
+  <style>
+    :root{
+      --bg:#f3f5f6; --card:#ffffff; --ink:#16312c; --muted:#6b7b77;
+      --brand:#5f7f73; --btn:#2f6f5f; --btn2:#e9efed; --line:#e5ece9;
+      --pill:#e8f1ee;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:var(--bg); color:#111; }
+    header{
+      background:var(--brand); color:#fff; padding:14px 18px;
+      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+      position:sticky; top:0; z-index:10;
+    }
+    header .logo{
+      width:40px; height:40px; border-radius:10px; background:#fff;
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+      flex:0 0 auto;
+    }
+    header .logo img{width:100%; height:100%; object-fit:contain}
+    header .titleblock{min-width:220px}
+    header .titleblock .t1{font-weight:700; letter-spacing:.2px}
+    header .titleblock .t2{opacity:.95; font-size:13px}
+    header .chips{margin-left:auto; display:flex; gap:10px; flex-wrap:wrap}
+    .chip{
+      background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.25);
+      padding:8px 10px; border-radius:999px; font-size:13px; white-space:nowrap;
+    }
+    main{max-width:980px; margin:26px auto; padding:0 16px;}
+    .panel{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px;}
+    .panel h1{margin:0 0 6px 0; font-size:22px; color:var(--ink)}
+    .panel p{margin:0 0 14px 0; color:var(--muted); font-size:14px; line-height:1.35}
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .btn{
+      border:0; border-radius:10px; padding:10px 12px; font-weight:600; cursor:pointer;
+      background:var(--btn); color:#fff;
+    }
+    .btn.secondary{background:var(--btn2); color:var(--ink); border:1px solid var(--line)}
+    input, select{
+      padding:10px 12px; border-radius:10px; border:1px solid var(--line);
+      background:#fff; min-width:180px;
+    }
+    input{flex:1; min-width:220px}
+    .cards{margin-top:16px; display:flex; flex-direction:column; gap:12px}
+    .groupTitle{margin:14px 0 6px; color:var(--muted); font-size:13px}
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px;
+      box-shadow:0 1px 0 rgba(0,0,0,.02);
+    }
+    .cardTop{display:flex; gap:10px; align-items:flex-start}
+    .num{
+      width:28px; height:28px; border-radius:999px; background:var(--pill);
+      display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--ink);
+      flex:0 0 auto;
+    }
+    .pills{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 6px}
+    .pill{
+      display:inline-block; background:var(--pill); color:var(--ink);
+      border:1px solid var(--line); padding:4px 10px; border-radius:999px; font-size:12px;
+      font-weight:600;
+    }
+    .card h3{margin:0 0 6px 0; font-size:18px; color:var(--ink)}
+    .link{color:#2f6f5f; word-break:break-all; text-decoration:none}
+    .link:hover{text-decoration:underline}
+    .error{
+      margin-top:14px; padding:12px; border:1px dashed #d9a; border-radius:12px;
+      background:#fff7f8; color:#7a2d39; font-size:14px;
+    }
+    footer{max-width:980px; margin:18px auto 30px; padding:0 16px; color:var(--muted); font-size:13px}
+    .footrow{display:flex; gap:18px; flex-wrap:wrap; justify-content:space-between; border-top:1px solid var(--line); padding-top:14px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="FVS-RCP">
+    </div>
+    <div class="titleblock">
+      <div class="t1">FVS-RCP • DEPI</div>
+      <div class="t2">Painel público de links — Editais Abertos (CNPq)</div>
+    </div>
+    <div class="chips">
+      <div class="chip" id="chipUpdated">Atualizado: —</div>
+      <div class="chip" id="chipTotal">Total: —</div>
+      <div class="chip" id="chipFonte">Fonte: —</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="panel">
+      <h1>Editais Abertos — CNPq</h1>
+      <p>Use busca e filtros para localizar rapidamente por <b>título/link</b>, <b>área</b> e <b>tipo</b>. No botão “Copiar tudo”, você copia a lista de links para WhatsApp/E-mail.</p>
+
+      <div class="row">
+        <button class="btn" id="btnCopy">Copiar tudo</button>
+        <button class="btn secondary" id="btnPrint">Imprimir / Salvar PDF</button>
+        <button class="btn secondary" id="btnClear">Limpar filtros</button>
+        <input id="q" placeholder="Busca (título ou link)" />
+        <select id="area"><option value="">Área (todas)</option></select>
+        <select id="tipo"><option value="">Tipo (todos)</option></select>
+        <select id="ord">
+          <option value="date_desc">Data (mais recente)</option>
+          <option value="date_asc">Data (mais antiga)</option>
+          <option value="title_asc">Título (A–Z)</option>
+          <option value="title_desc">Título (Z–A)</option>
+        </select>
+      </div>
+
+      <div id="err" class="error" style="display:none;"></div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footrow">
+      <div>Documento público (GitHub Pages) — FVS-RCP/DEPI</div>
+      <div id="footFonte">Fonte: —</div>
+    </div>
+  </footer>
+
+<script>
+  // URL do JSON SEMPRE relativo ao GitHub Pages (mesma pasta do index.html)
+  const DATA_URL = new URL("data.json", window.location.href).toString();
+
+  let EDITAIS = [];
+  let FONTE_URL = "";
+  let UPDATED_AT = "";
+
+  const $ = (id) => document.getElementById(id);
+
+  function formatBR(yyyy_mm_dd){
+    if(!yyyy_mm_dd) return "";
+    const [y,m,d] = (yyyy_mm_dd || "").split("-");
+    if(!y || !m || !d) return "";
+    return `${d}/${m}/${y}`;
+  }
+
+  function uniqueSorted(arr){
+    return [...new Set(arr)].sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  }
+
+  async function carregarDados(){
+    try{
+      // cache-bust forte (evita ficar vendo JSON antigo)
+      const url = DATA_URL + (DATA_URL.includes("?") ? "&" : "?") + "v=" + Date.now();
+      const res = await fetch(url, { cache:"no-store" });
+      if(!res.ok) throw new Error("Falha ao carregar data.json (HTTP " + res.status + ")");
+      const data = await res.json();
+
+      UPDATED_AT = data.updated_at || "";
+      FONTE_URL  = data.source || "";
+
+      // Normaliza itens
+      EDITAIS = (data.items || []).map(it => ({
+        titulo: it.title || "(sem título)",
+        url: it.url || "",
+        data: it.date || "",
+        area: it.area || "Geral",
+        tipo: it.type || "Edital",
+      }));
+
+      // Atualiza chips e rodapé
+      $("chipUpdated").textContent = "Atualizado: " + (UPDATED_AT ? formatBR(UPDATED_AT) : "—");
+      $("chipTotal").textContent   = "Total: " + (EDITAIS.length || 0) + " editais";
+      $("chipFonte").textContent   = "Fonte: " + (FONTE_URL ? "site da CNPq" : "—");
+      $("footFonte").textContent   = "Fonte: " + (FONTE_URL || "—");
+
+      // Preenche filtros
+      const areas = uniqueSorted(EDITAIS.map(x=>x.area));
+      const tipos = uniqueSorted(EDITAIS.map(x=>x.tipo));
+
+      const selArea = $("area");
+      const selTipo = $("tipo");
+      selArea.innerHTML = `<option value="">Área (todas)</option>` + areas.map(a=>`<option>${a}</option>`).join("");
+      selTipo.innerHTML = `<option value="">Tipo (todos)</option>` + tipos.map(t=>`<option>${t}</option>`).join("");
+
+      $("err").style.display = "none";
+      render();
+    } catch(e){
+      $("err").style.display = "block";
+      $("err").textContent = "Falha ao carregar os dados. Isso normalmente acontece quando o link do JSON não está acessível. Detalhe: " + e.message;
+      // Ainda tenta renderizar o que tiver
+      render();
+    }
+  }
+
+  function getFiltered(){
+    const q = ($("q").value || "").trim().toLowerCase();
+    const area = $("area").value || "";
+    const tipo = $("tipo").value || "";
+
+    let arr = EDITAIS.slice();
+
+    if(q){
+      arr = arr.filter(x =>
+        (x.titulo || "").toLowerCase().includes(q) ||
+        (x.url || "").toLowerCase().includes(q)
+      );
+    }
+    if(area) arr = arr.filter(x => x.area === area);
+    if(tipo) arr = arr.filter(x => x.tipo === tipo);
+
+    const ord = $("ord").value;
+    if(ord === "date_desc"){
+      arr.sort((a,b)=>(b.data||"").localeCompare(a.data||""));
+    } else if(ord === "date_asc"){
+      arr.sort((a,b)=>(a.data||"").localeCompare(b.data||""));
+    } else if(ord === "title_asc"){
+      arr.sort((a,b)=>(a.titulo||"").localeCompare(b.titulo||"","pt-BR"));
+    } else if(ord === "title_desc"){
+      arr.sort((a,b)=>(b.titulo||"").localeCompare(a.titulo||"","pt-BR"));
+    }
+    return arr;
+  }
+
+  function render(){
+    const wrap = $("cards");
+    const arr = getFiltered();
+
+    $("chipTotal").textContent = "Total: " + (arr.length || 0) + " editais";
+
+    if(!arr.length){
+      wrap.innerHTML = `<div class="card"><div class="pills"><span class="pill">Sem resultados</span></div><h3>Nenhum edital encontrado</h3></div>`;
+      return;
+    }
+
+    wrap.innerHTML = arr.map((x, i) => `
+      <div class="card">
+        <div class="cardTop">
+          <div class="num">${i+1}</div>
+          <div style="width:100%">
+            <div class="pills">
+              <span class="pill">${x.area}</span>
+              <span class="pill">${x.tipo}</span>
+              <!-- REMOVIDO: pill de data por item, para não confundir o usuário -->
+            </div>
+            <h3>${escapeHtml(x.titulo)}</h3>
+            <a class="link" href="${escapeAttr(x.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(x.url)}</a>
+          </div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function escapeHtml(s){
+    return (s||"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function escapeAttr(s){
+    return (s||"").replace(/"/g,"&quot;");
+  }
+
+  // Botões
+  $("btnCopy").addEventListener("click", ()=>{
+    const arr = getFiltered();
+    const txt = arr.map(x => `${x.titulo}\n${x.url}\n`).join("\n");
+    navigator.clipboard.writeText(txt).then(()=>{
+      $("btnCopy").textContent = "Copiado!";
+      setTimeout(()=> $("btnCopy").textContent = "Copiar tudo", 900);
+    }).catch(()=>{
+      alert("Não consegui copiar automaticamente. Selecione e copie manualmente.");
+    });
+  });
+
+  $("btnPrint").addEventListener("click", ()=> window.print());
+
+  $("btnClear").addEventListener("click", ()=>{
+    $("q").value = "";
+    $("area").value = "";
+    $("tipo").value = "";
+    $("ord").value = "date_desc";
+    render();
+  });
+
+  ["q","area","tipo","ord"].forEach(id=>{
+    $(id).addEventListener("input", render);
+    $(id).addEventListener("change", render);
+  });
+
+  carregarDados();
+</script>
+</body>
+</html>

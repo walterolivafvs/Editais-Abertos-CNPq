@@ -1,0 +1,51 @@
+{
+  "source": {
+    "name": "CNPq — Chamadas Abertas para Submissão",
+    "url": "https://www.gov.br/cnpq/pt-br/chamadas/abertas-para-submissao"
+  },
+  "updated_at": "2026-03-05",
+  "items": [
+    {
+      "title": "Chamada pública CNPq/MCTI/MEMP N° 05/2026 - Programa de Iniciação ao Empreendedorismo - PIEMP",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-05-2026/chamada-publica-cnpq-N-05-2026",
+      "area": "Inovação/Empreendedorismo",
+      "type": "Chamada Pública",
+      "date": "2026-04-13"
+    },
+    {
+      "title": "CHAMADA PÚBLICA CNPq/MPA Nº 03/2026 PROGRAMA JOVEM CIENTISTA DA PESCA ARTESANAL - INICIAÇÃO CIENTÍFICA JÚNIOR (ICJ)",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-03-2026/chamada-publica-cnpq-mpa-no-03-2026-programa-jovem-cientista-da-pesca-artesanal-iniciacao-cientifica-junior-icj",
+      "area": "Pesca/ICJ",
+      "type": "Chamada Pública",
+      "date": "2026-03-17"
+    },
+    {
+      "title": "Chamada Pública MCTI/CNPq Nº 02/2026 Programa de Cooperação Latino-Americana e Caribenha em Ciência, Tecnologia e Inovação - PROSUL Pepe Mujica",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-02-2026/chamada-publica-mcti-cnpq-no-02-2026-programa-de-cooperacao-latino-americana-e-caribenha-em-ciencia-tecnologia-e-inovacao-prosul-pepe-mujica",
+      "area": "Cooperação Internacional",
+      "type": "Chamada Pública",
+      "date": "2026-04-30"
+    },
+    {
+      "title": "Chamada Nº 28/2025 - Apoio a Projetos de Cooperação CNPq-TUBITAK",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2025/chamada-no-28-2025/chamada-no-28-2025-apoio-a-projetos-de-cooperacao-cnpq-tubitak",
+      "area": "Cooperação Internacional",
+      "type": "Chamada",
+      "date": "2026-05-04"
+    },
+    {
+      "title": "Chamada CNPq/Daevs/SVSA/MS Nº 33/2025 - Pesquisa, Extensão e Formação em Epidemiologia e Vigilância em Saúde",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2025/chamada-no-33-2025/chamada-cnpq-daevs-svsa-ms-no-33-2025-pesquisa-extensao-e-formacao-em-epidemiologia-e-vigilancia-em-saude",
+      "area": "Saúde Pública",
+      "type": "Chamada",
+      "date": "2026-03-31"
+    },
+    {
+      "title": "CNPq/CAPES/IRD Nº 27/2025 Programa de apoio ao Centro Franco-Brasileiro de Biodiversidade Amazônica",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2025/chamada-no-27-2025/cnpq-capes-ird-no-27-2025-programa-de-apoio-ao-centro-franco-brasileiro-de-biodiversidade-amazonica",
+      "area": "Biodiversidade/Amazônia",
+      "type": "Chamada",
+      "date": "2026-03-02"
+    }
+  ]
+}
